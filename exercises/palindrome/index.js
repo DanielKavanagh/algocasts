@@ -24,8 +24,6 @@ function palindrome(str) {
 	return true;
 }
 
-palindrome('abbbcbbba');
-
 module.exports = palindrome;
 
 // function palindrome(str) {
