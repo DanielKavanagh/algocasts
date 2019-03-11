@@ -23,7 +23,8 @@ function steps(n) {
 		for (let j = 0; j < n; j++) {
 			if (j <= i) {
 				stair += '#';
-			} else {
+			}
+			else {
 				stair += ' ';
 			}
 		}
@@ -32,4 +33,27 @@ function steps(n) {
 	}
 }
 
+function steps_recursive(n, row = 0, stair = '') {
+	if (n === row) {
+		return;
+	}
+
+	if (n === stair.length) {
+		console.log(stair);
+		return steps_recursive(n, row + 1);
+	}
+
+	if (stair.length <= row) {
+		stair += '#';
+	}
+	else {
+		stair += ' ';
+	}
+
+	steps_recursive(n, row, stair);
+
+
+}
+
 module.exports = steps;
+module.exports = steps_recursive;

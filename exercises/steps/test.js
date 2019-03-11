@@ -1,4 +1,5 @@
 const steps = require('./index');
+const steps_recursive = require('./index.js');
 
 beforeEach(() => {
   jest.spyOn(console, 'log');
@@ -18,6 +19,13 @@ test('steps called with n = 1', () => {
   expect(console.log.mock.calls.length).toEqual(1);
 });
 
+test('steps_recursive called with n = 1', () => {
+  steps_recursive(1);
+  expect(console.log.mock.calls[0][0]).toEqual('#');
+  expect(console.log.mock.calls.length).toEqual(1);
+});
+
+
 test('steps called with n = 2', () => {
   steps(2);
   expect(console.log.mock.calls[0][0]).toEqual('# ');
@@ -25,8 +33,23 @@ test('steps called with n = 2', () => {
   expect(console.log.mock.calls.length).toEqual(2);
 });
 
+test('steps_recursive called with n = 2', () => {
+  steps_recursive(2);
+  expect(console.log.mock.calls[0][0]).toEqual('# ');
+  expect(console.log.mock.calls[1][0]).toEqual('##');
+  expect(console.log.mock.calls.length).toEqual(2);
+});
+
 test('steps called with n = 3', () => {
   steps(3);
+  expect(console.log.mock.calls[0][0]).toEqual('#  ');
+  expect(console.log.mock.calls[1][0]).toEqual('## ');
+  expect(console.log.mock.calls[2][0]).toEqual('###');
+  expect(console.log.mock.calls.length).toEqual(3);
+});
+
+test('steps_recursive called with n = 3', () => {
+  steps_recursive(3);
   expect(console.log.mock.calls[0][0]).toEqual('#  ');
   expect(console.log.mock.calls[1][0]).toEqual('## ');
   expect(console.log.mock.calls[2][0]).toEqual('###');
